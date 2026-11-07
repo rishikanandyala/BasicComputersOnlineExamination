@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f3f6fb">
+    <title>Basic Computers | Online Examination</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/exam.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="Basic Computers examination home">
+        <span class="brand-mark" aria-hidden="true">BC</span>
+        <span>Basic Computers</span>
+      </a>
+      <span class="header-label">Online Examination</span>
+    </header>
+
+    <main class="page-shell">
+      <section id="exam-view" aria-labelledby="exam-title">
+        <div class="intro">
+          <p class="eyebrow">STUDENT EXAMINATION</p>
+          <h1 id="exam-title">Basic Computers</h1>
+          <p class="intro-copy">Read each question carefully and select one answer.</p>
+          <div class="exam-facts" aria-label="Examination details">
+            <span>10 questions</span>
+            <span>10 marks</span>
+            <span>1 mark each</span>
+          </div>
+        </div>
+
+        <form id="exam-form" novalidate>
+          <section class="student-card" aria-labelledby="student-details-title">
+            <div class="section-heading">
+              <span class="step-number">01</span>
+              <div>
+                <h2 id="student-details-title">Student details</h2>
+                <p>Enter your details before starting your attempt.</p>
+              </div>
+            </div>
+            <div class="student-fields">
+              <label class="field-label" for="student-name">
+                Student name
+                <input id="student-name" name="studentName" type="text" maxlength="100"
+                  autocomplete="name" required>
+              </label>
+              <label class="field-label" for="roll-number">
+                Roll number
+                <input id="roll-number" name="rollNumber" type="text" maxlength="50"
+                  autocomplete="off" required>
+              </label>
+            </div>
+          </section>
+
+          <div class="questions-heading">
+            <div>
+              <p class="eyebrow">YOUR QUESTIONS</p>
+              <h2>Choose one answer</h2>
+            </div>
+            <span id="question-count" class="question-count">Loading questions…</span>
+          </div>
+          <div id="questions" class="question-list" aria-live="polite"></div>
+          <p id="form-message" class="message" role="alert" tabindex="-1" hidden></p>
+          <div class="submit-row">
+            <p>Your answers are saved when you submit the exam.</p>
+            <button id="submit-button" class="button button-primary" type="submit" disabled>
+              Submit exam
+              <span aria-hidden="true">→</span>
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <section id="report-view" class="report-view" aria-labelledby="report-title" hidden>
+        <div class="report-actions no-print">
+          <p class="eyebrow">SUBMISSION COMPLETE</p>
+          <div class="action-buttons">
+            <button id="print-button" class="button button-secondary" type="button">Print / Save PDF</button>
+            <button id="retake-button" class="button button-primary" type="button">Take exam again</button>
+          </div>
+        </div>
+        <article class="report-card">
+          <header class="report-header">
+            <div>
+              <p class="eyebrow">EXAMINATION RESULT</p>
+              <h1 id="report-title" tabindex="-1">Basic Computers - Exam Report</h1>
+              <p class="report-subtitle">Multiple Choice Questions</p>
+            </div>
+            <div class="score-badge" aria-label="Final score">
+              <span id="report-score" class="score-value"></span>
+              <span class="score-caption">SCORE</span>
+            </div>
+          </header>
+          <dl class="student-summary">
+            <div><dt>Name</dt><dd id="report-name"></dd></div>
+            <div><dt>Roll No</dt><dd id="report-roll"></dd></div>
+            <div><dt>Submitted</dt><dd id="report-date"></dd></div>
+          </dl>
+          <div class="table-wrap">
+            <table class="report-table">
+              <thead>
+                <tr>
+                  <th scope="col">No.</th>
+                  <th scope="col">Question</th>
+                  <th scope="col">Your Answer</th>
+                  <th scope="col">Correct Answer</th>
+                  <th scope="col">Mark</th>
+                </tr>
+              </thead>
+              <tbody id="report-rows"></tbody>
+              <tfoot>
+                <tr>
+                  <th scope="row" colspan="4">Final total</th>
+                  <td id="report-total"></td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+          <p class="report-footer">Basic Computers · Online Examination</p>
+        </article>
+      </section>
+    </main>
+    <footer class="site-footer">Basic Computers Online Examination</footer>
+  </body>
+</html>

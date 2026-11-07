@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f3f6fb">
+    <title>Teacher Dashboard | Basic Computers</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/teacher.css">
+    <script src="/teacher.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="Basic Computers student examination">
+        <span class="brand-mark" aria-hidden="true">BC</span>
+        <span>Basic Computers</span>
+      </a>
+      <span class="header-label">Teacher Portal</span>
+    </header>
+
+    <main class="teacher-shell">
+      <section id="login-panel" class="login-panel" aria-labelledby="login-title" hidden>
+        <div class="login-icon" aria-hidden="true">BC</div>
+        <p class="eyebrow">SECURE TEACHER ACCESS</p>
+        <h1 id="login-title">Welcome back</h1>
+        <p class="login-copy">Sign in to review submitted examination reports.</p>
+        <form id="login-form">
+          <label class="field-label" for="teacher-password">
+            Teacher password
+            <input id="teacher-password" name="password" type="password"
+              autocomplete="current-password" maxlength="1024" required>
+          </label>
+          <p id="login-message" class="message" role="alert" tabindex="-1" hidden></p>
+          <button id="login-button" class="button button-primary login-button" type="submit">
+            Sign in <span aria-hidden="true">→</span>
+          </button>
+        </form>
+        <a class="student-link" href="/">Return to student examination</a>
+      </section>
+
+      <section id="dashboard-panel" aria-labelledby="dashboard-title" hidden>
+        <div class="dashboard-heading">
+          <div>
+            <p class="eyebrow">EXAMINATION OVERVIEW</p>
+            <h1 id="dashboard-title">Teacher dashboard</h1>
+            <p class="dashboard-copy">Review and manage submitted student reports.</p>
+          </div>
+          <div class="dashboard-actions">
+            <button id="refresh-button" class="button button-secondary" type="button">
+              <span aria-hidden="true">↻</span> Refresh reports
+            </button>
+            <button id="logout-button" class="button button-quiet" type="button">Log out</button>
+          </div>
+        </div>
+
+        <div class="summary-grid" aria-label="Report summary">
+          <article class="summary-card">
+            <span class="summary-icon" aria-hidden="true">▤</span>
+            <div><p>Total attempts</p><strong id="attempt-count">—</strong></div>
+          </article>
+          <article class="summary-card">
+            <span class="summary-icon summary-icon-purple" aria-hidden="true">◎</span>
+            <div><p>Average score</p><strong id="average-score">—</strong></div>
+          </article>
+        </div>
+
+        <p id="dashboard-message" class="message" role="alert" tabindex="-1" hidden></p>
+        <section id="reports-panel" class="reports-panel" aria-labelledby="reports-title">
+          <div class="reports-heading">
+            <div>
+              <h2 id="reports-title">Student submissions</h2>
+              <p>Newest submissions appear first.</p>
+            </div>
+            <span id="reports-count" class="reports-count"></span>
+          </div>
+          <div id="reports-loading" class="loading-state" role="status" hidden>
+            <span class="loading-spinner" aria-hidden="true"></span>
+            Loading reports…
+          </div>
+          <div id="reports-empty" class="empty-state" hidden>
+            <span class="empty-icon" aria-hidden="true">▤</span>
+            <h3>No submissions yet</h3>
+            <p>Submitted examination attempts will appear here.</p>
+          </div>
+          <div id="reports-table-wrap" class="table-wrap reports-table-wrap">
+            <table class="dashboard-table">
+              <thead>
+                <tr>
+                  <th scope="col">Student</th>
+                  <th scope="col">Roll number</th>
+                  <th scope="col">Exam</th>
+                  <th scope="col">Score</th>
+                  <th scope="col">Submitted</th>
+                  <th scope="col"><span class="visually-hidden">Actions</span></th>
+                </tr>
+              </thead>
+              <tbody id="reports-rows"></tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+
+      <section id="teacher-report-panel" class="teacher-report-panel" aria-labelledby="teacher-report-title" hidden>
+        <div class="report-actions no-print">
+          <button id="back-button" class="button button-secondary" type="button">
+            <span aria-hidden="true">←</span> Back to dashboard
+          </button>
+          <button id="teacher-print-button" class="button button-primary" type="button">Print / Save PDF</button>
+        </div>
+        <article class="report-card">
+          <header class="report-header">
+            <div>
+              <p class="eyebrow">STUDENT EXAMINATION RESULT</p>
+              <h1 id="teacher-report-title" tabindex="-1">Basic Computers - Exam Report</h1>
+              <p id="teacher-exam-name" class="report-subtitle"></p>
+            </div>
+            <div class="score-badge" aria-label="Final score">
+              <span id="teacher-report-score" class="score-value"></span>
+              <span class="score-caption">SCORE</span>
+            </div>
+          </header>
+          <dl class="student-summary">
+            <div><dt>Name</dt><dd id="teacher-report-name"></dd></div>
+            <div><dt>Roll No</dt><dd id="teacher-report-roll"></dd></div>
+            <div><dt>Submitted</dt><dd id="teacher-report-date"></dd></div>
+          </dl>
+          <div class="table-wrap">
+            <table class="report-table">
+              <thead>
+                <tr>
+                  <th scope="col">No.</th>
+                  <th scope="col">Question</th>
+                  <th scope="col">Student’s answer</th>
+                  <th scope="col">Correct answer</th>
+                  <th scope="col">Mark</th>
+                </tr>
+              </thead>
+              <tbody id="teacher-report-rows"></tbody>
+              <tfoot>
+                <tr><th scope="row" colspan="4">Final total</th><td id="teacher-report-total"></td></tr>
+              </tfoot>
+            </table>
+          </div>
+          <p class="report-footer">Basic Computers · Online Examination</p>
+        </article>
+      </section>
+    </main>
+    <footer class="site-footer">Basic Computers Online Examination</footer>
+  </body>
+</html>
